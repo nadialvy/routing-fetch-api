@@ -1,8 +1,5 @@
 import Router from 'next/router'
 import { useDispatch } from 'react-redux';
-import store from '../src/store';
-import React, { useEffect } from 'react';
-
 function handleCardClick(city) {
     Router.push(`/cities/${city.slug}`);
 }
@@ -22,8 +19,6 @@ export default function ListCity({ city }){
 }
 
 export async function getDetailWeather(lat, long) {
-    const dispatch = useDispatch();
-
     try{
         const res = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=43ea6baaad7663dc17637e22ee6f78f2`);
         const data = await res.json();
